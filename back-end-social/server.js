@@ -9,6 +9,13 @@ const app=express();
 //cors
 const cors=require('cors')
 app.use(cors())
+//image upload
+const fileUpload=require("express-fileupload")
+app.use(fileUpload({
+    useTempFiles:true
+}))
+
+console.log('ddddddddddddddddddddddddddddddddddddddd')
 //body parser
 const bodyParser=require("body-parser")
 app.use(bodyParser.json())

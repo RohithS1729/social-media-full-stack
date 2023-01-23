@@ -2,6 +2,9 @@ const UserData=require("../modals/userData")
 
 
 const homeOrLogin=(req,res)=>{
+
+    
+
     UserData.findOne({username:req.body.username}).exec((err,data)=>{
         if(err){
             res.send(err)
@@ -12,11 +15,14 @@ const homeOrLogin=(req,res)=>{
         }else{
             if(data.comparePassword(req.body.password)){
                 res.send({
-                    msg:'logged in'
+                    msg:'logged in',
+                    userId:data._id
                 })
             }else{
                 res.send({
                     msg:'wrong password or username'
+                    
+                    
                 })
             }
         }
